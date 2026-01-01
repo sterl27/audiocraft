@@ -7,28 +7,72 @@ AudioCraft is a PyTorch library for deep learning research on audio generation. 
 for two state-of-the-art AI generative models producing high-quality audio: AudioGen and MusicGen.
 
 
-## Installation
-AudioCraft requires Python 3.9, PyTorch 2.1.0. To install AudioCraft, you can run the following:
+## 🚀 Agentic AudioCraft
 
-```shell
-# Best to make sure you have torch installed first, in particular before installing xformers.
-# Don't run this if you already have PyTorch installed.
-python -m pip install 'torch==2.1.0'
-# You might need the following before trying to install the packages
-python -m pip install setuptools wheel
-# Then proceed to one of the following
-python -m pip install -U audiocraft  # stable release
-python -m pip install -U git+https://git@github.com/facebookresearch/audiocraft#egg=audiocraft  # bleeding edge
-python -m pip install -e .  # or if you cloned the repo locally (mandatory if you want to train).
-python -m pip install -e '.[wm]'  # if you want to train a watermarking model
+This repository has been enhanced with an AI Agent system that integrates with **OpenAI** and **ElevenLabs**.
+
+### Key Features
+
+*   **MusicAgent**: A GPT-powered orchestrator that converts simple user ideas into complex MusicGen prompts.
+*   **Voice Synthesis**: Integrated ElevenLabs support for adding vocal narrations or intros to generated tracks.
+*   **Vector Ready**: Pre-configured for Pinecone and Supabase for track indexing and metadata storage.
+
+---
+
+## 🛠️ Setup & Installation
+
+AudioCraft requires Python 3.9 and PyTorch 2.1.0.
+
+1.  **Virtual Environment**:
+
+    ```powershell
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+
+2.  **Install Dependencies**:
+
+    ```powershell
+    pip install -r requirements.txt
+    pip install -e .
+    ```
+
+3.  **Configure API Keys**:
+    Create a `.env` file in the root directory and add your keys:
+
+    ```env
+    OPENAI_API_KEY=your_key
+    ELEVEN_API_KEY=your_key
+    PINECONE_API_KEY=your_key
+    ```
+
+## 🪄 Usage
+
+### Running the Agent
+
+Generate a full track with an AI-optimized prompt and voice intro:
+
+```powershell
+python music_agent.py
 ```
 
-We also recommend having `ffmpeg` installed, either through your system or Anaconda:
-```bash
-sudo apt-get install ffmpeg
-# Or if you are using Anaconda or Miniconda
-conda install "ffmpeg<5" -c conda-forge
+### Running the Web App
+
+Launch the interactive Gradio demo:
+
+```powershell
+python demos/musicgen_app.py
 ```
+
+### Quick Script
+
+For simple text-to-music without the agent:
+
+```powershell
+python custom_gen.py
+```
+
+---
 
 ## Models
 
